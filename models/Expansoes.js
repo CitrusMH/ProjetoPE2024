@@ -3,7 +3,7 @@ const connection = require('../database/database');
 
 const jogos = require('./Jogos');
 
-const Expasoes = connection.define('conquista', {
+const Expasoes = connection.define('expansao', {
     nome: {
         type: Sequelize.STRING,
         allowNull: false

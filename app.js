@@ -33,6 +33,7 @@ app.use(session({
     resave: true,
     saveUninitialized: false
 }));
+
 // DB
 connection
     .authenticate()
