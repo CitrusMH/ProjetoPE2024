@@ -13,6 +13,9 @@ const conquistas = require('./models/Conquistas');
 const jogos = require('./models/Jogos');
 const expansoes = require('./models/Expansoes');
 
+// routes
+const genericRoute = require('./routes/genericRoutes');
+
 const app = express();
 
 // view engine setup
@@ -43,5 +46,9 @@ connection
     .catch((error) => {
         console.log(error);
     });
+
+// Routes Activation
+app.use('/', genericRoute);
+
 
 module.exports = app;
