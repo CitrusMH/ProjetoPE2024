@@ -5,3 +5,8 @@ body {
   background: rgb(44,62,80);
   background: linear-gradient(180deg, rgba(44,62,80,1) 0%, rgba(0,0,0,1) 100%);
 }
+
+nav {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.3);
+}
