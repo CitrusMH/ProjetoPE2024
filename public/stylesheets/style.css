@@ -1,5 +1,4 @@
 body {
-  display: flex;
   min-height: 100vh;
   flex-direction: column;
   background: linear-gradient(315deg, #2C3E50 3%, #000000 38%, #000000 68%, #2C3E50  98%);
@@ -67,8 +66,6 @@ body {
         transform: translateX(1);
     }
 }
-
-
 nav {
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.3);
