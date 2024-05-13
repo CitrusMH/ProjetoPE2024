@@ -8,6 +8,10 @@ const Jogos = connection.define('jogo', {
         type: sequelize.STRING,
         allowNull: false
     },
+    genero: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
     platinado: {
         type: sequelize.BOOLEAN,
         allowNull: false

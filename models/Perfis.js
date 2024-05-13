@@ -3,7 +3,7 @@ const connection = require('../database/database');
 
 const usuario = require('./Usuarios');
 
-const Perfil = connection.define('Perfil', {
+const Perfil = connection.define('perfil', {
     nome: {
         type: Sequelize.STRING,
         allowNull: false
