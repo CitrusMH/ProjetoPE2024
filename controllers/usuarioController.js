@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const Usuarios = require('../models/Usuarios');
 
 exports.create = (req, res, next) => {
@@ -46,4 +46,8 @@ exports.login = (req, res, next) => {
             res.status(404).send("Email ou senha incorretos!");
         }
     });
+};
+
+exports.mostrarLogin = (req, res, next) => {
+    res.render('login');
 };

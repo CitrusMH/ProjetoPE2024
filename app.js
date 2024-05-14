@@ -15,6 +15,7 @@ const expansoes = require('./models/Expansoes');
 
 // routes
 const genericRoute = require('./routes/genericRoutes');
+const usuarioRoute = require('./routes/usuarioRoutes');
 
 const app = express();
 
@@ -49,6 +50,6 @@ connection
 
 // Routes Activation
 app.use('/', genericRoute);
-
+app.use('/usuario', usuarioRoute);
 
 module.exports = app;

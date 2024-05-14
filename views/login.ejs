@@ -1,0 +1,39 @@
+<%- include('./partials/header.ejs') %>
+    <div class="container">
+        <div class="card position-absolute top-50 start-50 translate-middle" style="width: 18rem;">
+            <div class="card-header bg-dark text-white font-weight-bold">
+                Login
+            </div>
+            <div class="card-body">
+                <form method="post" action="/usuarios/login">
+                    <div class="form-floating mb-3">
+                        <input type="text" 
+                        name="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Digite sua Senha">
+                    </div>
+                    <label for="email">Digite sua Senha:</label>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" class="btn btn-primary">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/usuarios/login">
+                <div class="form-floating mb-3">
+                    <input 
+                    type="password" 
+                    name="senha"
+                    class="form-control"
+                    id="senha"
+                    placeholder="exemple@domain.com">
+                </div>
+                <label for="email">Digite seu e-mail:</label>
+            </form>
+        </div>
+    </div>
+<%- include('./partials/footer.ejs') %>
