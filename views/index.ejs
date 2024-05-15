@@ -1,10 +1,11 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/nav.ejs') %>
-<div class="text-white">
-    <h1>Bem vindo ao nexus</h1>
-    <div>
-        <p>Este é um sistema de gerenciamento de jogos, conquistas e DLCs.</p>
-        <a href="">para continuar, faça login</a>
+<div class="text-white d-flex flex-column align-items-center mx-4" style="text-align: center;">
+    <h1>Bem vindo ao Nexus!</h1>
+    <div class="d-flex flex-column align-items-center">
+        <p>Este é o seu sistema de gerenciamento de jogos, conquistas e DLCs.</p>
+        <a href="/usuario/login">para continuar, faça login</a>ou
+        <a href="/usuario/novousuario">crie uma conta</a>  
     </div>
 </div>
 <%- include('./partials/footer.ejs') %>
