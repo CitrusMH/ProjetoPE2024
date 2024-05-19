@@ -2,9 +2,6 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const Usuarios = require('../models/Usuarios');
 
-exports.mostarCadastro = (req, res, next) => {
-    res.render ('cadastrousuario', { msg: '' });
-};
 exports.create = (req, res, next) => {
     const email = req.body.email;
     const senha = req.body.senha;
@@ -14,7 +11,7 @@ exports.create = (req, res, next) => {
     }else if (senha == undefined || senha == '' || senha == ' ' || senha == null || senha.length < 8 || senha.indexOf(' ') != -1) {
         res.render('cadastroUsuario', { msg: 'Senha inválida! A senha deve conter no mínimo 8 caracteres e não pode conter espaços!'});
     }else{
-        let salt = bcrypt.genSaltSync(10);111
+        let salt = bcrypt.genSaltSync(10);
         let senhaHash = bcrypt.hashSync(senha, salt);
 
         Usuarios.findOne({ where: { email: email } }).then((usuario) => {
@@ -47,12 +44,12 @@ exports.login = (req, res, next) => {
                     id: usuario.id,
                     email: usuario.email
                 }
-                res.status(200).send("Login realizado com sucesso!");
+                res.redirect('/home');
             } else {
-                res.status(401).send("Email ou senha incorretos!");
+                res.render('login', {msg: "Email ou senha invalidos!"});
             }
         } else {
-            res.status(404).send("Email ou senha incorretos!");
+            res.render('login', {msg: "Email ou senha invalidos!"});
         }
     });
 };
@@ -60,3 +57,7 @@ exports.login = (req, res, next) => {
 exports.mostrarLogin = (req, res, next) => {
     res.render('login', { msg: '' });
 };
+exports.mostrarCadastro = (req, res, next) => {
+    res.render('cadastrousuario', { msg: '' });
+};
+

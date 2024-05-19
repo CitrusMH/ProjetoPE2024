@@ -1,6 +1,6 @@
 <%- include('./partials/header.ejs') %>
 <div class="text-white">
-  <form method="post" action="/usuario/login">
+  <form method="post" action="/usuario/novousuario">
     <div data-mdb-input-init class="form-outline mb-4">
       <label class="form-label" for="email">Email:</label>
       <input
@@ -26,16 +26,16 @@
       data-bs-theme="dark"
       class="btn btn-dark btn-block mb-4"
     >
-      Entrar
+      Criar Conta
     </button>
     <div class="text-center">
-      <p>Náo possui conta? <a href="/usuario/novousuario">Registre-se</a></p>
+      <p>já possui conta? <a href="/usuario/login">Entrar</a></p>
       <a href="/">Voltar ao Inicio</a>
     </div>
     <%
     if(msg != '') {
     %>
-    <div class="alert alert-custom" role="alert">
+    <div class="alert alert-danger" role="alert">
       <%= msg %>
     </div>
     <%
