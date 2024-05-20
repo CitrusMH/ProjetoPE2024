@@ -1,6 +1,7 @@
 <%- include('./partials/header.ejs') %>
 <div class="text-white">
   <form method="post" action="/usuario/novousuario">
+    <h1 class="text-center">Criar Conta</h1>
     <div data-mdb-input-init class="form-outline mb-4">
       <label class="form-label" for="email">Email:</label>
       <input
@@ -30,17 +31,17 @@
     </button>
     <div class="text-center">
       <p>já possui conta? <a href="/usuario/login">Entrar</a></p>
-      <a href="/">Voltar ao Inicio</a>
     </div>
-    <%
+    
+  </form>
+</div>
+<%
     if(msg != '') {
     %>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-custom text-white mx-2" role="alert">
       <%= msg %>
     </div>
     <%
     }
     %>
-  </form>
-</div>
 <%- include('./partials/footer.ejs') %>

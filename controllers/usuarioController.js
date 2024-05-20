@@ -44,7 +44,7 @@ exports.login = (req, res, next) => {
                     id: usuario.id,
                     email: usuario.email
                 }
-                res.redirect('/home');
+                res.redirect('/');
             } else {
                 res.render('login', {msg: "Email ou senha invalidos!"});
             }

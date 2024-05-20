@@ -12,10 +12,6 @@ const Perfil = connection.define('perfil', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    jogos: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
 });
 
 Perfil.belongsTo(usuario);
