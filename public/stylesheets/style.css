@@ -1,9 +1,4 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    flex-direction: column;
     background: linear-gradient(315deg, #2C3E50 3%, #000000 38%, #000000 68%, #2C3E50  98%);
     animation: gradient 15s ease infinite;
     background-size: 400% 400%;
@@ -77,4 +72,11 @@ nav {
 .alert-custom{
     background-color: #502c32;
     margin-top: 24px;
+}
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
 }

@@ -3,7 +3,7 @@ const connection = require('../database/database');
 
 const usuario = require('./Usuarios');
 
-const Perfil = connection.define('perfil', {
+const Perfis = connection.define('perfis', {
     nome: {
         type: Sequelize.STRING,
         allowNull: false
@@ -14,8 +14,8 @@ const Perfil = connection.define('perfil', {
     },
 });
 
-Perfil.belongsTo(usuario);
+Perfis.belongsTo(usuario);
 
-//Perfil.sync({force: true});
+//Perfis.sync({force: true});
 
-module.exports = Perfil;
+module.exports = Perfis;

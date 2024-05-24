@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+<div class="container mt-3">
+  <div class="card col-12">
+
+  </div>
+</div>
+<%if(msg != '') {
+    %>
+    <div class="alert alert-custom text-white mx-auto text-center" role="alert">
+      <%= msg %>
+    </div>
+    <%
+    }
+    %>
+<%- include('../partials/footer.ejs') %>
