@@ -16,7 +16,7 @@ const expansoes = require('./models/Expansoes');
 // routes
 const genericRoute = require('./routes/genericRoutes');
 const usuarioRoute = require('./routes/usuarioRoutes');
-const perfilRoute = require('./routes/perfisRoutes');
+const perfilRoute = require('./routes/perfisRoutes')
 
 const app = express();
 

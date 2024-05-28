@@ -1,0 +1,110 @@
+<%- include('../partials/header.ejs') %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Editar Perfil
+        </div>
+        <div class="card-body">
+            <form method="post" action="/livros/salvar">
+                <input type="hidden" name="id" value="<%= perfil.id %>">
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control"
+                        name="nome"
+                        id="nome"
+                        placeholder="Título do Livro"
+                        value="<%= perfil.titulo %>"
+                        required>
+                    <label for="nome"></label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control"
+                        name="paginas"
+                        id="paginas"
+                        placeholder="Páginas do Livro"
+                        value="<%= livro.paginas %>"
+                        required>
+                    <label for="nome">Páginas do Livro</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select 
+                        class="form-control" 
+                        name="generoId"
+                        id="generoId">
+                        <% generos.forEach(genero => { 
+                               if(genero.id == livro.generoId) { %>
+
+                            <option value="<%= genero.id %>" selected>
+                                <%= genero.genero %>
+                            </option>
+                            <%
+                                }
+                                else
+                                {
+                            %>
+                            <option value="<%= genero.id %>">
+                                <%= genero.genero %>
+                            </option>
+                        <% }}) %>
+                    </select>
+                    <label for="generoId">Selecione o Gênero</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select 
+                        class="form-control" 
+                        name="editoraId"
+                        id="editoraId">
+                        <% editoras.forEach(editora => { 
+                            if(editora.id == livro.editoraId)
+                            {
+                            %>
+                            <option value="<%= editora.id %>" selected>
+                                <%= editora.nome %>
+                            </option>
+                            <%
+                            }
+                            else
+                            { %>
+                            <option value="<%= editora.id %>">
+                                <%= editora.nome %>
+                            </option>
+                        <% }}) %>
+                    </select>
+                    <label for="editoraId">Selecione a Editora</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select 
+                        class="form-control" 
+                        name="autorId"
+                        id="autorId">
+                        <% autores.forEach(autor => {
+                            if(autor.id == livro.autorId)
+                            {
+                             %>
+                            <option value="<%= autor.id %>" selected>
+                                <%= autor.nome %>
+                            </option>
+                            <%
+                            }
+                            else
+                            {
+                            %>
+                            <option value="<%= autor.id %>">
+                                <%= autor.nome %>
+                            </option>
+                        <% }}) %>
+                    </select>
+                    <label for="autorId">Selecione o Autor</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                    <a href="/livros" class="btn btn-warning">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

@@ -1,82 +1,187 @@
 body {
-    background: linear-gradient(315deg, #2C3E50 3%, #000000 38%, #000000 68%, #2C3E50  98%);
-    animation: gradient 15s ease infinite;
-    background-size: 400% 400%;
-    background-attachment: fixed;
+  background: linear-gradient(
+    315deg,
+    #2c3e50 3%,
+    #000000 38%,
+    #000000 68%,
+    #2c3e50 98%
+  );
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 .wave {
-    background: #2c3e5080;
-    border-radius: 1000% 1000% 0 0;
-    position: fixed;
-    width: 200%;
-    height: 12em;
-    animation: wave 10s -3s linear infinite;
-    transform: translate3d(0, 0, 0);
-    opacity: 0.8;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
+  background: #2c3e5080;
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .wave:nth-of-type(2) {
-    bottom: -1.25em;
-    animation: wave 18s linear reverse infinite;
-    opacity: 0.6;
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.6;
 }
 
 .wave:nth-of-type(3) {
-    bottom: -2.5em;
-    animation: wave 20s -1s reverse infinite;
-    opacity: 0.5;
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.5;
 }
 
 @keyframes wave {
-    2% {
-        transform: translateX(1);
-    }
+  2% {
+    transform: translateX(1);
+  }
 
-    25% {
-        transform: translateX(-25%);
-    }
+  25% {
+    transform: translateX(-25%);
+  }
 
-    50% {
-        transform: translateX(-50%);
-    }
+  50% {
+    transform: translateX(-50%);
+  }
 
-    75% {
-        transform: translateX(-25%);
-    }
+  75% {
+    transform: translateX(-25%);
+  }
 
-    100% {
-        transform: translateX(1);
-    }
+  100% {
+    transform: translateX(1);
+  }
 }
 nav {
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.alert-custom{
-    background-color: #502c32;
-    margin-top: 24px;
+.alert-custom {
+  background-color: #502c32;
+  margin-top: 24px;
 }
-.flex-center{
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.btn-primary {
+  background: #2c3e50;
+  border-color: #253444;
+}
+.btn-primary:hover {
+  background: #1e293b;
+  border-color: #0c121b;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+
+  /* Bordas */
+  border-bottom: 1px solid gray;
+}
+
+.modal-content {
+  border-color: gray;
+  border-radius: 8px;
+}
+
+@scope (.modal-body) {
+  :scope {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    min-height: 100vh;
+    gap: 8px;
+  }
+  @scope (.form-control) {
+    :scope {
+      border: 1px solid gray;
+    }
+    input,
+    input:focus,
+    input:focus-visible {
+      outline: none;
+      border: none;
+      color: white;
+    }
+  }
+  small {
+    position: relative;
+    top: -8px;
+
+    color: gray;
+  }
+}
+
+.modal-footer {
+  border-top: 1px solid gray;
+}
+
+@scope (.icon.add-perfil) {
+  :scope {
+    height: 28px;
+    width: 28px;
+
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+  }
+
+  :scope:hover {
+    transform: scale(1.2);
+  }
+
+  svg {
+    height: 28px;
+  }
+}
+
+@scope(.dialog) {
+    :scope {
+        height: 100%; 
+        width: 100%; 
+        position: absolute;
+    }
+
+    .alert-custom {
+      position: relative;
+      top: calc(50% - 50px);
+      
+      width: 300px;
+      
+      margin: auto;
+      
+      z-index: -10;
+    }
+}
+
+.teste {
+  margin-top: 100px;
 }

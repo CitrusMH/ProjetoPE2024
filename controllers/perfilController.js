@@ -7,19 +7,31 @@ exports.create = (req, res, next) => {
 
     Perfis.findOne({ where: { nome: nome, plataforma: plataforma }}).then((perfil) => {
         if (perfil) {
-            res.render('perfis/myProfiles', { msg: 'Perfil já existe' });
+            res.render('perfis/myProfiles', { msg: 'Perfil já existe', perfis: []});
         } else {
-            const usuarioId = req.session.usuario; 
+            const usuarioId = req.session.usuario.id; 
+           
             Perfis.create({ nome, plataforma, usuarioId })
-                .then((perfil) => {
-                    res.render('perfis/myProfiles', { msg: 'Perfil criado com sucesso' });
+                .then(() => {
+                    Perfis.findAll({ where: { usuarioId: usuarioId }})
+                    .then((perfis) => {
+                        if (perfis.length == 0) {
+                            res.render('perfis/myProfiles', { msg: 'Nenhum perfil encontrado' , perfis: []});
+                        } else {
+                            res.render('perfis/myProfiles', { msg: '', perfis: perfis });
+                        }
+                    })
+                    .catch((error) => {
+                        res.render('perfis/myProfiles', { msg: error , perfis: []});
+                    });
                 })
                 .catch((error) => {
-                    res.render('perfis/myProfiles', { msg: error });
+                    res.render('perfis/myProfiles', { msg: error, perfis: []});
                 });
         }
     });
-}
+};
+
 exports.update = (req, res, next) => {
     const { nome, plataforma } = req.body;
     const id = req.params.id;
@@ -28,53 +40,63 @@ exports.update = (req, res, next) => {
         if (perfil) {
             perfil.update({ nome, plataforma })
                 .then(() => {
-                    res.render('perfis/myProfiles', { msg: 'Perfil atualizado com sucesso' });
+                    Perfis.findAll({ where: { usuarioId: usuarioId }})
+                    .then((perfis) => {
+                        if (perfis.length == 0) {
+                            res.render('perfis/myProfiles', { msg: 'Nenhum perfil encontrado', perfis: []});
+                        } else {
+                            res.render('perfis/myProfiles', { msg: '', perfis: perfis });
+                        }
+                    })
+                    .catch((error) => {
+                        res.render('perfis/myProfiles', { msg: error, perfis: []});
+                    });
                 })
                 .catch((error) => {
-                    res.render('perfis/myProfiles', { msg: error });
+                    res.render('perfis/myProfiles', { msg: error, perfis: []});
                 });
         } else {
-            res.render('perfis/myProfiles', { msg: 'Perfil não encontrado' });
+            res.render('perfis/myProfiles', { msg: 'Perfil não encontrado', perfis: []});
         }
     });
 };
+
 exports.delete = (req, res, next) => {
     const id = req.params.id;
 
-    Perfis.findOne({ where: { id: id }}).then((perfil) => {
-        if (perfil) {
-            perfil.destroy()
-                .then(() => {
-                    res.render('perfis/myProfiles', { msg: 'Perfil deletado com sucesso' });
+    Perfis.destroy({ where: { id: id }})
+        .then(() => {
+            const usuarioId = req.session.usuario.id; 
+
+            Perfis.findAll({ where: { usuarioId: usuarioId }})
+                .then((perfis) => {
+                    if (perfis.length == 0) {
+                        res.render('perfis/myProfiles', { msg: 'Nenhum perfil encontrado', perfis: []});
+                    } else {
+                        res.render('perfis/myProfiles', { msg: '', perfis: perfis });
+                    }
                 })
                 .catch((error) => {
-                    res.render('perfis/myProfiles', { msg: error });
+                    res.render('perfis/myProfiles', { msg: error, perfis: []});
                 });
-        } else {
-            res.render('perfis/myProfiles', { msg: 'Perfil não encontrado' });
-        }
-    });
+        })
+        .catch((error) => {
+            res.render('perfis/myProfiles', { msg: error, perfis: []});
+        });
 };
+
 exports.showMyProfiles = (req, res, next) => {
-    const usuarioId = req.session.usuario; 
+    const usuarioId = req.session.usuario.id; 
 
     Perfis.findAll({ where: { usuarioId: usuarioId }})
         .then((perfis) => {
             if (perfis.length == 0) {
-                res.render('perfis/myProfiles', { msg: 'Nenhum perfil encontrado' });
+                res.render('perfis/myProfiles', { msg: 'Nenhum perfil encontrado', perfis: []});
             } else {
-                const perfisMap = perfis.map((perfil) => {
-                    return {
-                        id: perfil.id,
-                        nome: perfil.nome,
-                        plataforma: perfil.plataforma,
-                    };
-                });
-
-                res.render('perfis/myProfiles', { msg: '', perfis: perfisMap });
+                res.render('perfis/myProfiles', { msg: '', perfis: perfis });
             }
         })
         .catch((error) => {
-            res.render('perfis/myProfiles', { msg: error });
+            res.render('perfis/myProfiles', { msg: error, perfis: []});
         });
 };
