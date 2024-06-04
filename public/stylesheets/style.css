@@ -1,3 +1,9 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background: linear-gradient(
     315deg,
@@ -6,9 +12,12 @@ body {
     #000000 68%,
     #2c3e50 98%
   );
-  animation: gradient 15s ease infinite;
   background-size: 400% 400%;
   background-attachment: fixed;
+
+  animation: gradient 15s ease infinite;
+
+  overflow: hidden;
 }
 
 @keyframes gradient {
@@ -143,15 +152,15 @@ nav {
 
 @scope (.icon.add-perfil) {
   :scope {
+    position: sticky;
+    display: block;
     height: 28px;
     width: 28px;
-
-    position: absolute;
     bottom: 16px;
-    right: 16px;
-
+    float: right;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
+    z-index: 10;
   }
 
   :scope:hover {
@@ -163,25 +172,115 @@ nav {
   }
 }
 
-@scope(.dialog) {
-    :scope {
-        height: 100%; 
-        width: 100%; 
-        position: absolute;
-    }
+@scope (.dialog) {
+  :scope {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
 
-    .alert-custom {
-      position: relative;
-      top: calc(50% - 50px);
-      
-      width: 300px;
-      
-      margin: auto;
-      
-      z-index: -10;
-    }
+  .alert-custom {
+    position: relative;
+    top: calc(50% - 50px);
+
+    width: 300px;
+
+    margin: auto;
+
+    z-index: -10;
+  }
 }
 
 .teste {
   margin-top: 100px;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 4px;
+  transition: all 0.6s ease-in-out;
+}
+
+#content-wrapper {
+  position: absolute;
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-inline: 8px;
+  width: calc(100% - 16px);
+}
+
+#games {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(6, 150px);
+  grid-template-rows: repeat(auto-fill, minmax(200px, 200px));
+  grid-gap: 16px;
+  margin-block: 32px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: whitesmoke;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  margin: 64px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+.card-game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 200px;
+  width: 150px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.card-game:hover {
+  transform: scale(1.1);
+}
+
+.card-game:hover img {
+  filter: brightness(20%);
+}
+
+.game-info {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px;
+
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+
+  text-decoration: none;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: all 0.6s ease-in-out;
+}
+
+.card-game:hover .game-info {
+  visibility: visible;
+  opacity: 1;
 }

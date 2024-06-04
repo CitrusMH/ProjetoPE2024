@@ -36,6 +36,8 @@ exports.update = (req, res, next) => {
     const { nome, plataforma } = req.body;
     const id = req.params.id;
 
+    const usuarioId = req.session.usuario.id;
+
     Perfis.findOne({ where: { id: id }}).then((perfil) => {
         if (perfil) {
             perfil.update({ nome, plataforma })

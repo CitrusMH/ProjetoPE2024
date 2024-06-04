@@ -12,15 +12,73 @@
 <div class="container">
   <div class="row">
     <% perfis.forEach(perfil => { %>
-      <div class="col-md-4">
+      <div class="col-md-4 mt-4">
         <div class="card bg-dark text-white">
           <div class="card-header">
             <%= perfil.nome %>
           </div>
           <div class="card-body">
             <p>Plataforma: <%= perfil.plataforma %></p>
-            <a href="./editar_perfil/<%= perfil.id %>" class="btn btn-primary">Editar</a>
-            <a href="./deletar_perfil/<%= perfil.id %>" class="btn btn-danger">Excluir</a>
+            
+            <form method="post" action="./deletar_perfil/<%= perfil.id %>" >
+              <a href="" class="btn btn-primary" data-toggle="modal"
+                data-target="#<%= perfil.id %>">Editar</a>
+              <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+              <button type="submit" name="submit_param" value="submit_value" class="btn btn-danger">
+                Excluir
+              </button>
+            </form>
+            <div
+              class="modal fade"
+              id="<%= perfil.id %>"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                  <form action="/perfil/editar_perfil/<%= perfil.id %>" method="POST">
+                  <!-- Modal header -->
+                  <div class="modal-header">
+                    <h5 class="modal-title text-light">
+                      Editar Perfil
+                    </h5>
+                  </div>
+                  
+                  <!-- Modal body -->
+                  <div class="modal-body p-8">
+                    <div class="form-control bg-transparent">
+                      <label class="col-xl-12 m-0 p-0" for="nome" style="color: lightgray">Nome</label>
+                      <input class="col-xl-12 m-0 p-0 bg-transparent border-0" type="text" name="nome" id="nome" value="<%= perfil.nome %>">
+                    </div>
+                    <small>Insira o nome do perfil</small>
+                    
+                    <label class="col-xl-12 m-0 p-0" for="plataforma" style="color: lightgray">Plataforma</label>
+                    <select class="form-control bg-dark text-white" name="plataforma" id="exampleFormControlSelect1" value="<%= perfil.plataforma %>">
+                      <option>Riot Client</option>
+                      <option>Playstation</option>
+                      <option>Xbox</option>]
+                      <option>Nintendo</option>
+                      <option>Epic Games</option>
+                      <option>Steam</option>
+                    </select>
+                 
+                    <small>Escolha alguma plataforma</small>
+                  </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cancelar
+                      </button>
+                      <button type="submit" class="btn btn-primary">
+                        Editar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -67,11 +125,17 @@
         </div>
         <small>Insira o nome do perfil</small>
         
-        <div class="form-control bg-transparent">
+        
           <label class="col-xl-12 m-0 p-0" for="plataforma" style="color: lightgray">Plataforma</label>
-          <input class="col-xl-12 m-0 p-0 bg-transparent border-0" type="text" name="plataforma" id="plataforma">
-        </div>  
-        <small>Insira o nome de alguma plataforma</small>
+          <select class="form-control bg-dark text-white" name="plataforma" id="exampleFormControlSelect1">
+            <option>Riot Client</option>
+            <option>Playstation</option>
+            <option>Xbox</option>]
+            <option>Nintendo</option>
+            <option>Epic Games</option>
+            <option>Steam</option>
+          </select>
+        <small>Escolha alguma plataforma</small>
       </div>
         
         <!-- Modal footer -->

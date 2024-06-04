@@ -16,7 +16,8 @@ const expansoes = require('./models/Expansoes');
 // routes
 const genericRoute = require('./routes/genericRoutes');
 const usuarioRoute = require('./routes/usuarioRoutes');
-const perfilRoute = require('./routes/perfisRoutes')
+const perfilRoute = require('./routes/perfisRoutes');
+const jogosRoute = require('./routes/jogosRoutes.js');
 
 const app = express();
 
@@ -53,5 +54,6 @@ connection
 app.use('/', genericRoute);
 app.use('/usuario', usuarioRoute);
 app.use('/perfil', perfilRoute);
+app.use('/jogos', jogosRoute);
 
 module.exports = app;
